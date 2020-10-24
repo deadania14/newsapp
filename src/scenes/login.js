@@ -7,8 +7,8 @@ export default function Login() {
 		<View style={styles.container}>
 			<View style={styles.header}>
 				<Text style={styles.headerText}>Welcome back</Text>
-				<View style={styles.subHeadText}>
-					<Text style={{ marginLeft: 20 }}>let's read some news</Text>
+				<View>
+					<Text style={styles.subHeadText}>let's read some news</Text>
 				</View>
 			</View>
 			<View style={styles.form}>
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
 		fontSize: 36,
 	},
 	form: {
-		paddingVertical: 20,
+		paddingVertical: 10,
 		paddingHorizontal: 15,
 		backgroundColor: '#ffffff',
 		flexDirection: 'column',

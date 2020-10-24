@@ -12,7 +12,6 @@ import {
 	ActivityIndicator,
 } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
-import SkillItem from '../reducers/skillData.json';
 import Splash from './splash';
 
 export default class Source extends React.Component {

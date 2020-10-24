@@ -7,8 +7,8 @@ export default function Register() {
 		<View style={styles.container}>
 			<View style={styles.header}>
 				<Text style={styles.headerText}>Welcome</Text>
-				<View style={styles.subHeadText}>
-					<Text style={{ marginLeft: 20 }}>create an account</Text>
+				<View>
+					<Text style={styles.subHeadText}>create an account</Text>
 				</View>
 			</View>
 			<View style={styles.form}>
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
 		fontSize: 36,
 	},
 	form: {
-		paddingVertical: 20,
+		paddingVertical: 10,
 		paddingHorizontal: 15,
 		backgroundColor: '#ffffff',
 		flexDirection: 'column',
