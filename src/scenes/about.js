@@ -2,16 +2,12 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Image, Linking, TouchableOpacity } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
+import Header from '../components/header';
 
-export default function About() {
+export default function About({ navigation }) {
 	return (
 		<>
-			<View style={styles.header}>
-				<TouchableOpacity>
-					<AntDesign name="menuunfold" size={36} color="black" />
-				</TouchableOpacity>
-				<Text style={styles.headerText}>About Creator</Text>
-			</View>
+			<Header HeaderText="About" iconName="home" onPress={() => navigation.navigate('Home')} />
 			<View style={styles.container}>
 				<View style={styles.MeTitlePosition}>
 					<Image source={require('../../assets/img/Me.png')} style={{ width: 141, height: 250 }} />
@@ -53,7 +49,7 @@ export default function About() {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		// backgroundColor: 'yellow',
+		backgroundColor: 'white',
 		alignItems: 'stretch',
 		justifyContent: 'center',
 	},

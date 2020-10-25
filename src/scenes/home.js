@@ -13,6 +13,8 @@ import {
 } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import Splash from './splash';
+import moment from 'moment';
+import Header from '../components/header';
 
 export default class Source extends React.Component {
 	constructor(props) {
@@ -42,7 +44,7 @@ export default class Source extends React.Component {
 				style={{
 					height: 0.5,
 					width: '100%',
-					// backgroundColor: 'rgba(0,0,0,0.5)',
+					backgroundColor: '#f8edeb',
 				}}
 			/>
 		);
@@ -54,34 +56,31 @@ export default class Source extends React.Component {
 				<View>
 					<Text style={styles.newsTitle}>{data.item.title}</Text>
 					<View style={styles.newsDetails}>
-						<Text style={styles.newsSrc}>{data.item.publishedAt}</Text>
-						<Text style={styles.newsTime}>· {data.item.source.name}</Text>
+						<Text style={styles.newsSrc}>{data.item.source.name}</Text>
+						<Text style={styles.newsTime}>· {moment(data.item.publishedAt).fromNow()}</Text>
 					</View>
 				</View>
 			</View>
 		</TouchableOpacity>
 	);
 	render() {
-		console.log(this.state.dataSource);
+		// console.log(this.state.dataSource);
 		const { navigation } = this.props;
 		if (this.state.loading) {
 			return <Splash />;
 		}
 		return (
-			<View style={styles.container}>
-				<View style={styles.header}>
-					<TouchableOpacity>
-						<AntDesign name="menuunfold" size={36} color="black" />
-					</TouchableOpacity>
-					<Text style={styles.headerText}>Headline News</Text>
+			<>
+				<Header HeaderText="Headline" iconName="infocirlceo" onPress={() => this.navigate('About')} />
+				<View style={styles.container}>
+					<FlatList
+						data={this.state.dataSource}
+						ItemSeparatorComponent={this.FlatListItemSeparator}
+						renderItem={(item) => this.renderItem(item)}
+						keyExtractor={(item, index) => index.toString()}
+					/>
 				</View>
-				<FlatList
-					data={this.state.dataSource}
-					// ItemSeparatorComponent={this.FlatListItemSeparator}
-					renderItem={(item) => this.renderItem(item)}
-					keyExtractor={(item, index) => index.toString()}
-				/>
-			</View>
+			</>
 		);
 	}
 }
@@ -94,16 +93,16 @@ const styles = StyleSheet.create({
 		justifyContent: 'flex-start',
 	},
 	header: {
-		marginTop: 40,
+		paddingTop: 40,
 		paddingVertical: 10,
 		// paddingHorizontal: 30,
 		// backgroundColor: 'blue',
 		backgroundColor: '#ffffff',
 		flexDirection: 'row',
-		// alignItems:""
+		justifyContent: 'space-between',
 	},
 	headerText: {
-		fontFamily: 'ComfortaaBold',
+		fontFamily: 'NotoSerifJPRegular',
 		fontSize: 36,
 		marginLeft: 20,
 	},
@@ -115,7 +114,7 @@ const styles = StyleSheet.create({
 	},
 	news: {
 		paddingHorizontal: 20,
-		paddingVertical: 20,
+		paddingVertical: 5,
 		backgroundColor: 'white',
 	},
 	newsDetails: {
@@ -124,12 +123,13 @@ const styles = StyleSheet.create({
 		alignContent: 'center',
 	},
 	newsTitle: {
-		fontFamily: 'RobotoRegular',
-		fontSize: 20,
+		fontFamily: 'CrimsonBoldItalic',
+		fontSize: 25,
+		marginBottom: 10,
 	},
 	newsSrc: {
 		// fontFamily: 'ComfortaaBold',
-		fontFamily: 'RobotoRegular',
+		fontFamily: 'NotoSerifRegular',
 		fontSize: 15,
 	},
 	newsTime: {

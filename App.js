@@ -11,6 +11,10 @@ const getFonts = () => {
 		ComfortaaRegular: require('./assets/fonts/ComfortaaRegular.ttf'),
 		RobotoBold: require('./assets/fonts/RobotoBold.ttf'),
 		RobotoRegular: require('./assets/fonts/RobotoRegular.ttf'),
+		CrimsonItalic: require('./assets/fonts/CrimsonItalic.ttf'),
+		CrimsonBoldItalic: require('./assets/fonts/CrimsonBoldItalic.ttf'),
+		NotoSerifRegular: require('./assets/fonts/NotoSerifRegular.ttf'),
+		NotoSerifJPRegular: require('./assets/fonts/NotoSerifJPRegular.otf'),
 	});
 };
 export default function App() {

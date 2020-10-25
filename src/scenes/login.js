@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, TextInput, View, Image, TouchableOpacity, Button } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
-export default function Login() {
+export default function Login({ navigation }) {
 	return (
 		<View style={styles.container}>
 			<View style={styles.header}>
@@ -16,13 +16,13 @@ export default function Login() {
 				<TextInput secureTextEntry={true} placeholder="Password" style={styles.textInput} />
 				<View style={styles.buttonAlign}>
 					<TouchableOpacity style={styles.theButton}>
-						<Button title="LOGIN" color="black"></Button>
+						<Button title="LOGIN" color="black" onPress={() => navigation.navigate('Home')}></Button>
 					</TouchableOpacity>
 				</View>
 			</View>
 			<View style={styles.subFootText}>
 				<Text>don't have an account yet?</Text>
-				<TouchableOpacity>
+				<TouchableOpacity onPress={() => navigation.navigate('Register')}>
 					<Text style={{ marginLeft: 10, fontWeight: 'bold' }}>REGISTER</Text>
 				</TouchableOpacity>
 			</View>

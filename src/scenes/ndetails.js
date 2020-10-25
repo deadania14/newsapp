@@ -1,22 +1,45 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import { AntDesign } from '@expo/vector-icons';
+import { StyleSheet, Text, View, TouchableOpacity, Image, ScrollView, Linking } from 'react-native';
+import data from '../dummy/dataDesc.json';
+import moment from 'moment';
+import Header from '../components/header';
 
 // https://www.youtube.com/watch?v=-40TBdSRk6E
 export default function NDetails({ route, navigation }) {
-	const { title, description, urlToImage, publishedAt } = route.params;
+	const { title, description, urlToImage, publishedAt, source, url, author, content } = route.params;
+	// console.log(urlToImage);
+	// const urlis = JSON.stringify(urlToImage);
+	// console.log(urlis);
 	return (
-		<View style={styles.container}>
-			<View style={styles.header}>
-				<TouchableOpacity>
-					<AntDesign name="menuunfold" size={36} color="black" />
-				</TouchableOpacity>
-				<Text style={styles.headerText}>Headline News</Text>
+		<>
+			<Header HeaderText={source.name} iconName="back" onPress={() => navigation.navigate('Home')} />
+			<View style={styles.container}>
+				<ScrollView>
+					<View style={styles.newsDetails}>
+						<Text style={styles.newsTitle}>{title}</Text>
+					</View>
+					<Image source={{ uri: urlToImage }} style={{ height: 200 }} />
+					<View style={styles.newsDetails}>
+						<Text style={styles.newsTime}>
+							{author + ' · ' + moment(publishedAt).add(3, 'days').calendar()}
+						</Text>
+						<Text style={styles.newsDesc}>{description}</Text>
+						<Text style={styles.newsCont}>{content}</Text>
+						<Text style={styles.newsCont}>
+							{data.text}
+							<TouchableOpacity
+								onPress={() => {
+									Linking.openURL(url);
+								}}
+							>
+								<Text style={styles.moreLink}>Check for More</Text>
+							</TouchableOpacity>
+						</Text>
+					</View>
+				</ScrollView>
 			</View>
-			<Text>{JSON.stringify(title)}</Text>
-			<Text>{JSON.stringify(description)}</Text>
-		</View>
+		</>
 	);
 }
 
@@ -31,24 +54,21 @@ const styles = StyleSheet.create({
 		justifyContent: 'flex-start',
 	},
 	header: {
-		marginTop: 40,
+		paddingTop: 40,
 		paddingVertical: 10,
 		// paddingHorizontal: 30,
 		// backgroundColor: 'blue',
 		backgroundColor: '#ffffff',
 		flexDirection: 'row',
-		// alignItems:""
 	},
 	headerText: {
-		fontFamily: 'ComfortaaBold',
+		fontFamily: 'NotoSerifJPRegular',
 		fontSize: 36,
 		marginLeft: 20,
 	},
 	thumbnail: {
 		height: 200,
-		// backgroundColor: 'blue',
-		marginVertical: 15,
-		// tintColor: 'gray',
+		width: 100,
 	},
 	news: {
 		paddingHorizontal: 20,
@@ -56,22 +76,40 @@ const styles = StyleSheet.create({
 		backgroundColor: 'white',
 	},
 	newsDetails: {
-		flexDirection: 'row',
-		// alignItems: 'center',
+		paddingHorizontal: 20,
+		backgroundColor: 'white',
 		alignContent: 'center',
 	},
 	newsTitle: {
-		fontFamily: 'RobotoRegular',
-		fontSize: 20,
+		fontFamily: 'CrimsonItalic',
+		fontSize: 25,
+		marginVertical: 20,
 	},
 	newsSrc: {
-		// fontFamily: 'ComfortaaBold',
 		fontFamily: 'RobotoRegular',
 		fontSize: 15,
 	},
 	newsTime: {
-		marginLeft: 5,
 		fontFamily: 'RobotoRegular',
+		fontSize: 15,
+		alignItems: 'stretch',
+		marginVertical: 10,
+		color: 'black',
+	},
+	newsDesc: {
+		marginBottom: 20,
+		fontFamily: 'RobotoRegular',
+		fontSize: 15,
+		color: 'grey',
+	},
+	newsCont: {
+		fontFamily: 'NotoSerifRegular',
+		fontSize: 15,
+		marginBottom: 20,
+	},
+	moreLink: {
+		backgroundColor: 'yellow',
+		fontFamily: 'NotoSerifRegular',
 		fontSize: 15,
 	},
 });
