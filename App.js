@@ -3,7 +3,10 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
+import { Provider } from 'react-redux';
+
 import Index from './src/index';
+import store from './src/store';
 
 const getFonts = () => {
 	return Font.loadAsync({
@@ -21,10 +24,12 @@ export default function App() {
 	const [fontsLoaded, setFontsLoaded] = useState(false);
 	if (fontsLoaded) {
 		return (
-			<View style={styles.container}>
-				{/* <Text>Open up App.js to start working on your app!</Text> */}
-				<Index />
-			</View>
+			<Provider store={store}>
+				<View style={styles.container}>
+					{/* <Text>Open up App.js to start working on your app!</Text> */}
+					<Index />
+				</View>
+			</Provider>
 		);
 	} else {
 		return <AppLoading startAsync={getFonts} onFinish={() => setFontsLoaded(true)} />;

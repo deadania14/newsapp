@@ -2,21 +2,22 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Image, Linking, TouchableOpacity } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
+import { useSelector } from 'react-redux';
 import Header from '../components/header';
-
+import store from '../store';
 export default function About({ navigation }) {
+	const GlobalState = useSelector((state) => state);
 	return (
 		<>
 			<Header HeaderText="About" iconName="home" onPress={() => navigation.navigate('Home')} />
 			<View style={styles.container}>
 				<View style={styles.MeTitlePosition}>
 					<Image source={require('../../assets/img/Me.png')} style={{ width: 141, height: 250 }} />
-
-					<Text style={styles.MeTitle}>Dea Dania</Text>
+					<Text style={styles.MeTitle}>{GlobalState.name}</Text>
 				</View>
 				<View style={styles.MeDetails}>
-					<Text style={styles.MeDHead}>JavaScript Anthusiast</Text>
-					<Text style={styles.MeDSub}>Depok, Jawa Barat, Indonesia</Text>
+					<Text style={styles.MeDHead}>{GlobalState.bio}</Text>
+					<Text style={styles.MeDSub}>{GlobalState.alamat}</Text>
 				</View>
 				<View style={styles.MeSocials}>
 					<Text style={styles.SocialsTitle}>Get to know me</Text>
@@ -24,20 +25,20 @@ export default function About({ navigation }) {
 						<TouchableOpacity
 							style={styles.SocialItems}
 							onPress={() => {
-								Linking.openURL('http://github.com/deadania14/');
+								Linking.openURL(GlobalState.socials.github.link);
 							}}
 						>
 							<AntDesign name="github" size={50} color="black" />
-							<Text style={styles.SIText}>deadania14</Text>
+							<Text style={styles.SIText}>{GlobalState.socials.github.username}</Text>
 						</TouchableOpacity>
 						<TouchableOpacity
 							style={styles.SocialItems}
 							onPress={() => {
-								Linking.openURL('https://twitter.com/deadania?lang=en');
+								Linking.openURL(GlobalState.socials.twitter.link);
 							}}
 						>
 							<AntDesign name="twitter" size={50} color="black" />
-							<Text style={styles.SIText}>deadania</Text>
+							<Text style={styles.SIText}>{GlobalState.socials.twitter.username}</Text>
 						</TouchableOpacity>
 					</View>
 				</View>
