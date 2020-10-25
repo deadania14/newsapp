@@ -65,13 +65,14 @@ const WelcomeStackScreen = () => (
 		<WelcomeStack.Screen name="Register" component={Register} options={{ headerShown: false }} />
 	</WelcomeStack.Navigator>
 );
+
 export const AppNavigator = () => (
 	<>
 		<NavigationContainer>
-			<Drawer.Navigator>
-				<Drawer.Screen name="Logout" component={WelcomeStackScreen} />
+			<Drawer.Navigator initialRouteName="Logout">
 				<Drawer.Screen name="Home" component={HomeStackScreen} />
 				<Drawer.Screen name="About" component={AboutStackScreen} />
+				<Drawer.Screen name="Logout" component={WelcomeStackScreen} />
 			</Drawer.Navigator>
 		</NavigationContainer>
 	</>

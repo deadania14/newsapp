@@ -4,11 +4,11 @@ const initialCreator = {
 	alamat: 'Depok, Jawa Barat, Indonesia',
 	socials: {
 		github: {
-			link: '',
+			link: 'https://github.com/deadania14/',
 			username: 'deadania14',
 		},
 		twitter: {
-			link: '',
+			link: 'https://twitter.com/deadania?lang=en',
 			username: 'deadania',
 		},
 	},
