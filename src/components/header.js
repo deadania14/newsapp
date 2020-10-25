@@ -7,7 +7,9 @@ class Header extends React.Component {
 	render() {
 		return (
 			<View style={styles.header}>
-				<Text style={styles.headerText}>{this.props.HeaderText}</Text>
+				<Text numberOfLines={3} style={styles.headerText}>
+					{this.props.HeaderText}
+				</Text>
 				<TouchableOpacity onPress={this.props.onPress}>
 					<AntDesign name={this.props.iconName} size={36} color="black" style={styles.icon} />
 				</TouchableOpacity>

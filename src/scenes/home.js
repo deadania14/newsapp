@@ -1,20 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import {
-	StyleSheet,
-	Text,
-	TextInput,
-	View,
-	Image,
-	TouchableOpacity,
-	Button,
-	FlatList,
-	ActivityIndicator,
-} from 'react-native';
+import { StyleSheet, Text, TextInput, View, Image, TouchableOpacity, FlatList } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import Splash from './splash';
 import moment from 'moment';
-import Header from '../components/header';
 
 export default class Source extends React.Component {
 	constructor(props) {
@@ -71,7 +60,6 @@ export default class Source extends React.Component {
 		}
 		return (
 			<>
-				<Header HeaderText="Headline" iconName="infocirlceo" onPress={() => this.navigate('About')} />
 				<View style={styles.container}>
 					<FlatList
 						data={this.state.dataSource}

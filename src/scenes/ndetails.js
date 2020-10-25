@@ -13,7 +13,7 @@ export default function NDetails({ route, navigation }) {
 	// console.log(urlis);
 	return (
 		<>
-			<Header HeaderText={source.name} iconName="back" onPress={() => navigation.navigate('Home')} />
+			<Header HeaderText={source.name} iconName="back" onPress={() => navigation.goBack(null)} />
 			<View style={styles.container}>
 				<ScrollView>
 					<View style={styles.newsDetails}>

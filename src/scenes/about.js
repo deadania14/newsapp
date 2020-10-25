@@ -3,13 +3,10 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, Linking, TouchableOpacity } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { useSelector } from 'react-redux';
-import Header from '../components/header';
-import store from '../store';
 export default function About({ navigation }) {
 	const GlobalState = useSelector((state) => state);
 	return (
 		<>
-			<Header HeaderText="About" iconName="home" onPress={() => navigation.navigate('Home')} />
 			<View style={styles.container}>
 				<View style={styles.MeTitlePosition}>
 					<Image source={require('../../assets/img/Me.png')} style={{ width: 141, height: 250 }} />
