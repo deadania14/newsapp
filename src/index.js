@@ -69,9 +69,9 @@ export const AppNavigator = () => (
 	<>
 		<NavigationContainer>
 			<Drawer.Navigator>
+				<Drawer.Screen name="Logout" component={WelcomeStackScreen} />
 				<Drawer.Screen name="Home" component={HomeStackScreen} />
 				<Drawer.Screen name="About" component={AboutStackScreen} />
-				<Drawer.Screen name="Logout" component={WelcomeStackScreen} />
 			</Drawer.Navigator>
 		</NavigationContainer>
 	</>

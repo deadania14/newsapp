@@ -17,7 +17,12 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "bundleIdentifier": "com.pondokbunda.newsate",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "com.pondokbunda.newsate",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/favicon.png"
